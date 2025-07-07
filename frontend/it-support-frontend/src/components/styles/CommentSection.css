@@ -1,0 +1,93 @@
+.comment-section {
+    margin-top: 40px;
+  }
+  
+  .comment-list {
+    margin-bottom: 20px;
+  }
+  
+  .comment-item {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .comment-meta {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .comment-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .comment-actions {
+    margin-top: 5px;
+  }
+  
+  .comment-actions button {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .comment-actions button:hover {
+    background-color: #b52a37;
+  }
+  
+  .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  .comment-form button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .comment-form {
+    margin-bottom: 20px; /* 🔧 увеличивает расстояние между формой и комментариями */
+  }
+  
+  .comment-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ⬅️ добавляет отступ между элементами */
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  .comment-header button.delete-comment {
+    margin-left: auto;
+    background-color: #dc3545;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .comment-header button.delete-comment:hover {
+    background-color: #b52a37;
+  }

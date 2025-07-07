@@ -1,0 +1,52 @@
+.category-page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  .material-item {
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .material-item h3 {
+    color: #1a0dab;
+    margin-bottom: 6px;
+  }
+  
+  .material-meta {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .pagination-controls button {
+    padding: 6px 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .no-materials {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 40px;
+    color: #666;
+  }
+  

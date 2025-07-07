@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-blocked-column-to-user
+      author: yourname
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: blocked
+                  type: BOOLEAN
+                  defaultValueBoolean: false
+                  remarks: "true = user is blocked by admin"
+                  constraints:
+                    nullable: false

@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-dict-lexemes
+      author: name
+      changes:
+
+        - sql:
+            splitStatements: true
+            stripComments: true
+            sql: |
+              CREATE MATERIALIZED VIEW IF NOT EXISTS dict_lexemes AS
+              SELECT word
+              FROM   ts_stat(
+                $$ SELECT to_tsvector('russian', title || ' ' || content)
+                   FROM public.material $$
+              )
+              WHERE length(word) > 3;
+
+        # уникальный индекс по слову
+        - sql:
+            sql: |
+              CREATE UNIQUE INDEX IF NOT EXISTS dict_lexemes_word
+              ON dict_lexemes(word);
+
+        #триграмм-индекс
+        - sql:
+            sql: |
+              CREATE INDEX IF NOT EXISTS dict_lexemes_trgm
+              ON dict_lexemes USING GIN (word gin_trgm_ops);
+              
+
+  - changeSet:
+      id: recreate-dict-lexemes
+      author: name
+      runOnChange: true
+      changes:
+        - sql:
+            splitStatements: true
+            stripComments: true
+            sql: |
+              CREATE MATERIALIZED VIEW IF NOT EXISTS dict_lexemes AS
+              SELECT word
+              FROM   ts_stat(
+                $$ SELECT to_tsvector('russian', title || ' ' || content)
+                   FROM public.material $$
+              )
+              WHERE length(word) > 3;
+
+              CREATE UNIQUE INDEX IF NOT EXISTS dict_lexemes_word
+                ON dict_lexemes(word);
+
+              CREATE INDEX IF NOT EXISTS dict_lexemes_trgm
+                ON dict_lexemes USING GIN (word gin_trgm_ops);
+
+  - changeSet:
+      id: recreate-dict-lexemes-fullwords
+      author: you
+      runOnChange: true
+      changes:
+        - sql:
+            splitStatements: true
+            stripComments: true
+            sql: |
+              CREATE MATERIALIZED VIEW dict_lexemes AS
+              SELECT DISTINCT lower(w) AS word
+              FROM (
+                SELECT regexp_split_to_table(
+                         regexp_replace(lower(title || ' ' || content), '[^а-яa-z0-9 ]', ' ', 'g'),
+                         '\s+'
+                       ) AS w
+                FROM public.material
+              ) t
+              WHERE length(w) > 3;
+              
+              CREATE UNIQUE INDEX dict_lexemes_word ON dict_lexemes(word);
+              CREATE INDEX dict_lexemes_trgm ON dict_lexemes USING GIN (word gin_trgm_ops);
+

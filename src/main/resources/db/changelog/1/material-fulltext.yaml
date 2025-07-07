@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: material_fulltext_ru
+      author: yourname
+      changes:
+        # ---------- ➊ колонка tsvector ----------
+        - addColumn:
+            tableName: material
+            columns:
+              - column:
+                  name: search_vector
+                  type: tsvector
+                  remarks: "title + content (russian)"
+
+        # ---------- ➋ первичное заполнение ----------
+        - sql:
+            sql: |
+              UPDATE material
+              SET    search_vector =
+                     to_tsvector(
+                       'russian',
+                       coalesce(title,'') || ' ' || coalesce(content,'')
+                     );
+
+        # ---------- ➌ расширение pg_trgm (на всякий случай) ----------
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+        # ---------- ➍ GIN-индекс ----------
+        - sql:
+            sql: |
+              CREATE INDEX material_search_vector_gin
+              ON material
+              USING GIN (search_vector);

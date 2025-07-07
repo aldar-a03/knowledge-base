@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - include:
+      - file: classpath:/db/changelog/1/create_material.sql
+  - include:
+      - file: classpath:/db/changelog/1/create_user.sql
+  - include:
+      - file: classpath:/db/changelog/1/create_history.sql
+  - include:
+      - file: classpath:/db/changelog/1/create_category.sql
+  - include:
+      - file: classpath:/db/changelog/1/create_material_category.sql
+  - include:
+      - file: classpath:/db/changelog/1/create_comment.sql
+  - include:
+      - file: classpath:/db/changelog/1/alter_material.sql
+  - include:
+      file:   classpath:/db/changelog/1/add_blocked_column_user.yaml
+  - include:
+      file:   classpath:/db/changelog/1/material-fulltext.yaml
+  - include:
+      file:   classpath:/db/changelog/1/material-fulltext-trigger.yaml
+  - include:
+      file:   classpath:/db/changelog/1/dict-lexemes.yaml
+  - include:
+      file:   classpath:/db/changelog/1/refresh_dict_lexemes.yaml
+  - include:
+      file:   classpath:/db/changelog/1/create_attachment.yaml

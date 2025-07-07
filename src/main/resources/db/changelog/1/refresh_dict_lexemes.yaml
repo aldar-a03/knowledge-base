@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: refresh-dict-lexemes
+      author: you
+      runAlways: true               #обновление при каждом старте
+      changes:
+        - sql:
+            splitStatements: false
+            stripComments: true
+            sql: |
+              REFRESH MATERIALIZED VIEW CONCURRENTLY dict_lexemes

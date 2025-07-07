@@ -1,0 +1,131 @@
+.home-wrapper {
+    transition: all 0.3s ease-in-out;
+    padding: 10px 60px; /* стало меньше сверху и снизу */
+}
+
+.center-align {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.left-align {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.search-section {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.search-section h2 {
+    margin-bottom: 0px; /* уменьшенный отступ после заголовка */
+}
+
+.search-results {
+    margin-top: 0;          /* убрать лишний отступ */
+    padding-top: 0;         /* на всякий случай */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    max-width: 900px;
+    width: 100%;
+}
+  
+
+
+.material-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.material-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a0dab;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.material-item p {
+    font-size: 15px;
+    color: #3c4043;
+    margin: 0;
+}
+
+.material-meta {
+    font-size: 13px;
+    color: #70757a;
+    margin-top: 5px;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap; /* перенос на новую строку при нехватке места */
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.category-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px 16px; /* меньше отступ */
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    width: 200px; /* уменьшенная ширина */
+}
+
+.delete-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+  }
+  
+  .delete-button:hover {
+    color: red;
+  }
+
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 45px; /* уменьшенная иконка */
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* По умолчанию скрываем крестик */
+.delete-button {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Показываем крестик только при наведении на карточку */
+  .category-card:hover .delete-button {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+

@@ -1,0 +1,82 @@
+.material-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: sans-serif;
+  }
+  
+  .material-container h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .material-meta {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .material-categories {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+  
+  .material-content {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+    margin-bottom: 30px;
+  }
+  
+  .material-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .material-buttons button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  
+  .material-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .material-buttons .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .material-buttons .delete-btn:hover {
+    background-color: #b52a37;
+  }
+
+  /* Показываем границы таблиц при просмотре */
+.material-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.material-content th,
+.material-content td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  min-width: 40px;
+  vertical-align: top;
+}
+
+.material-content th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+  

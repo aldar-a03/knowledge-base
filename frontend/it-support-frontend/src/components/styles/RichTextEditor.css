@@ -1,0 +1,312 @@
+/* ───── Обёртка редактора ───── */
+.editor-wrapper {
+  margin-top: 16px;
+}
+
+/* ───── Блок с текстом ───── */
+.editor-area-wrapper {
+  position: relative;
+}
+
+.editor-area {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  min-height: 300px;
+  background: #fff;
+  margin-top: 8px; /* отступ от тулбара */
+}
+
+/* ───── Верхняя строка: надпись + тулбар ───── */
+.editor-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.editor-label {
+  font-weight: 500;
+  line-height: 32px; /* выравнивание по высоте кнопок */
+  white-space: nowrap;
+}
+
+/* ───── Кнопки форматирования ───── */
+.menu-bar {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.menu-bar button {
+  width: 32px;
+  height: 32px;
+  background: #e5e5e5;
+  border: 1px solid #999;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 1;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.menu-bar button:hover {
+  background: #d0d0d0;
+}
+
+.menu-bar button.active {
+  background: #4d79ff;
+  border-color: #3c5ee6;
+  color: #fff;
+}
+
+.menu-bar .divider {
+  width: 1px;
+  background: #b0b0b0;
+  margin: 0 6px;
+}
+
+/* ───── Точки в списке ───── */
+.list-icon {
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* ───── Кнопка удаления таблицы ───── */
+.delete-table-button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #2d72d9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.delete-table-button:hover {
+  background: #1b59b8;
+  transform: scale(1.1);
+}
+
+
+
+/* ───── Модальное окно ───── */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.modal input {
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+.editor-area:focus-visible {
+  outline: none;
+}
+.editor-area div[contenteditable="true"] {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ───── Стили для таблицы внутри редактора ───── */
+.editor-area table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: white;
+  border: 1px solid #ccc; /* внешняя граница всей таблицы */
+}
+
+.editor-area th,
+.editor-area td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  min-width: 40px;
+  vertical-align: top;
+  color: black;
+}
+
+.editor-area th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.editor-area td:empty::before {
+  content: '\00a0'; /* чтобы пустые ячейки не схлопывались */
+}
+
+/* ───── Ручки ресайза изображений ───── */
+.image-resizer {
+  position: relative;
+  display: block;      /* было inline-block — меняем на block */
+}
+
+.image-resizer .resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #2684ff;          /* цвет точек */
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.image-resizer .resize-handle.nw { top: -5px;  left: -5px;  cursor: nwse-resize; }
+.image-resizer .resize-handle.ne { top: -5px;  right: -5px; cursor: nesw-resize; }
+.image-resizer .resize-handle.sw { bottom: -5px; left: -5px; cursor: nesw-resize; }
+.image-resizer .resize-handle.se { bottom: -5px; right: -5px; cursor: nwse-resize; }
+
+.image-resizer .resize-handle.n {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.image-resizer .resize-handle.s {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.image-resizer .resize-handle.e {
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.image-resizer .resize-handle.w {
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.image-resizer img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ——— Заполняем контейнер без белых полос ——— */
+.image-resizer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* или contain / fill – как удобнее */
+}
+
+/* ——— картинка целиком внутри рамки ——— */
+.image-resizer {
+  overflow: hidden;      /* ничего не торчит наружу */
+}
+
+.image-resizer img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;   /* заполняем всю область */
+  object-position: center;
+}
+.image-resizer {
+  vertical-align: top;     /* прижатие к верху строки */
+  line-height: 0;          /* нет «запаса» под текст */
+}
+
+/* ─── убираем вертикальные отступы у контейнера картинки ─── */
+.editor-area .node-imageComponent,
+.editor-area .image-component    {
+  margin-block: 0 !important;    /* margin-top + margin-bottom = 0 */
+  line-height: 0 !important;     /* курсор не «поднимает» картинку */
+}
+
+/* ─── Выравнивание картинок ─── */
+.editor-area .image-component[data-align="left"] {
+  display: block;          /* дефолт: прижато влево */
+}
+
+.editor-area .image-component[data-align="center"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;      /* центр */
+}
+
+.editor-area .image-component[data-align="right"] {
+  display: block;
+  margin-left: auto;       /* прижато вправо */
+}
+
+/* ─── выравнивание картинок по атрибуту textalign ─── */
+.editor-area .node-imageComponent[textalign="center"] {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;   /* по центру */
+}
+
+.editor-area .node-imageComponent[textalign="right"] {
+  display: block;
+  margin-left: auto !important;     /* прижимаем вправо */
+}
+
+.form-group {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column; /* если хочешь label сверху, кнопку под ним */
+  gap: 6px;
+}
+
+.file-upload-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #4d79ff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+
+

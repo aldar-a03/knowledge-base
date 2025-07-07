@@ -1,0 +1,37 @@
+# ======== Приложение ========
+spring.application.name=it-support-system
+
+# ======== Swagger UI ========
+springdoc.swagger-ui.enabled=true
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.persist-authorization=true
+
+# ======== Datasource (ЗАПОЛНИТЕ) ========
+spring.datasource.url=jdbc:postgresql://localhost:5432/knowledgeBase
+spring.datasource.username=<DB_USER>
+spring.datasource.password=<DB_PASSWORD>
+
+spring.jpa.database=postgresql
+
+# ======== Liquibase ========
+spring.liquibase.default-schema=public
+spring.liquibase.change-log=classpath:db/changelog/liquibase.yaml
+spring.liquibase.enabled=true
+
+# ======== JPA / Hibernate ========
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# ======== JWT (ЗАПОЛНИТЕ) ========
+token.signing.key=<JWT_SECRET>
+
+# ======== Логирование ========
+logging.level.org.springframework.security=DEBUG
+
+# ======== File-storage ========
+app.storage.type=local
+
+# ======== Multipart ========
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=20MB

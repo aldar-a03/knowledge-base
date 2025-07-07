@@ -1,0 +1,196 @@
+.edit-material-wrapper {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.edit-material-wrapper h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.edit-form input,
+.edit-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-form label {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.edit-form button {
+    align-self: flex-start;
+    padding: 10px 24px;
+    background-color: #2d72d9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.edit-form button:hover {
+    background-color: #1b59b8;
+}
+
+.error-message {
+    color: #b00020;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+  
+/* выравнивание лейбла и редактора по одной линии */
+.editor-row {
+    display: flex;
+    align-items: center;    /* центрируем по вертикали */
+    gap: 16px;              /* расстояние между надписью и редактором */
+    margin-bottom: 16px;    /* отступ снизу, как у других полей */
+  }
+  
+  
+  
+  .editor-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+/* список без маркеров */
+.file-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0;
+}
+
+.inline-file {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.file-remove-btn {
+  all: unset; /* Полный сброс стилей */
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 4px;
+  line-height: 1;
+  display: inline;
+}
+.inline-file .file-remove-btn {
+  margin: 0 0 0 4px;
+}
+
+/* полный сброс стилей «кнопки удаления» */
+.file-remove-btn {
+  all: unset;              /* отменяем всё назначенное до этого */
+  display: inline-block;   /* ведёт себя как <span> */
+  margin-left: 4px;        /* отступ слева от ссылки */
+  cursor: pointer;         /* рука при наведении */
+  font-size: 16px;         /* размер крестика */
+  line-height: 1;          /* выравнивание по текстовой базовой линии */
+  color: red;              /* цвет крестика */
+}
+
+/* если нужно, можно сузить «хитбокс» ещё: */
+.file-remove-btn {
+  padding: 0;              /* никаких внутренних отступов */
+  width: auto;
+  height: auto;
+  min-width: unset;
+  min-height: unset;
+}
+
+.edit-form .inline-file .file-remove-btn {
+  all: unset;                 /* снимет всё из .edit-form button */
+  display: inline-block;      /* чтобы она стояла на одной строке с текстом */
+  vertical-align: middle;     /* выравниваем по тексту */
+  margin: 0 0 0 4px !important; /* нужный левый отступ + обнулить margin-top */
+  padding: 0 !important;      /* обнулим внутренние отступы */
+  font-size: 16px;            /* чтобы крестик был того же размера, что ваш текст */
+  line-height: 1;             /* без добавочного межстрочного */
+  color: red;                 /* ваш цвет */
+  cursor: pointer;
+}
+
+.inline-file + .inline-file {
+  margin-top: 8px;
+}
+
+/* в вашем CSS-файле (например EditMaterialPage.css) */
+.file-list {
+  /* убираем всё и ставим свой маленький отступ снизу */
+  margin: 0 0 4px 0 !important;
+  padding-left: 0 !important; /* у вас уже есть, но на всякий случай */
+}
+
+.file-upload-button {
+  /* если у кнопки есть свой отступ сверху – обнуляем и ставим нужный */
+  margin: 4px 0 0 0 !important;
+}
+
+.edit-form .file-list {
+  margin-bottom: 1px !important;
+}
+.edit-form .file-upload-button {
+  margin-top: 1px !important;
+}
+
+/* убираем лишний gap между «Файлы» и списком */
+.form-group > label {
+  margin-bottom: 1px !important;  /* уменьшили space под надписью */
+}
+
+/* минимальный отступ сверху и снизу у списка */
+.form-group > ul.file-list {
+  margin: 1px 0 !important;       /* 2px сверху и снизу */
+  padding-left: 0 !important;
+}
+
+.edit-form .form-group > ul {
+  margin-block-start: 2px !important; /* уменьшили отступ сверху от «Файлы» */
+  margin-block-end:   2px !important; /* уменьшили отступ снизу до кнопки */
+  padding-inline-start: 0      !important;
+}
+
+/* Отступы между файлами в режиме просмотра */
+.material-attachments ul {
+  padding-inline-start: 20px; /* чтобы сохранить стандартный отступ для буллета */
+  margin: 0;                   /* сброс всех отступов у UL */
+}
+
+.material-attachments ul li {
+  margin-bottom: 8px;         /* интервалы между элементами */
+  line-height: 1.4;           /* чуть больше межстрочного, если нужно */
+}
+
+
+
+
+
+
+  
+  
+  
